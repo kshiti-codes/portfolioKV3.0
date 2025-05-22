@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --netflix-red: #E50914;
+  --netflix-black: #000000;
+  --netflix-dark: #141414;
+  --netflix-gray: #808080;
+  --netflix-white: #FFFFFF;
+  --neon-blue: #00F3FF;
+  --neon-purple: #BC13FE;
+  --neon-pink: #FF2EB3;
+  --neon-green: #0FFF50;
+}
+
+body {
+  @apply bg-black text-white font-sans overflow-x-hidden;
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.section-padding {
+  @apply py-20 px-4 md:px-8 lg:px-16;
+}
+
+.netflix-gradient {
+  background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(20,20,20,0.8) 100%);
+}
+
+.netflix-card {
+  @apply relative overflow-hidden rounded-md transition-all duration-500;
+}
+
+.netflix-card:hover {
+  @apply transform scale-105 z-10;
+}
+
+.netflix-card:hover .netflix-card-overlay {
+  @apply opacity-100;
+}
+
+.netflix-card-overlay {
+  @apply absolute inset-0 bg-gradient-to-t from-black/90 to-black/30 opacity-70 transition-opacity duration-300;
+}
+
+.section-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.section-glow::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150%;
+  height: 200px;
+  opacity: 0;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(229, 9, 20, 0.15) 0%,
+    rgba(229, 9, 20, 0.05) 50%,
+    transparent 100%
+  );
+  filter: blur(20px);
+  pointer-events: none;
+  transition: opacity 0.6s ease-out;
+}
+
+.section-glow.in-view::after {
+  opacity: 1;
+}
+
+.text-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.text-reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-glow.red::after {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(229, 9, 20, 0.15) 0%,
+    rgba(229, 9, 20, 0.05) 50%,
+    transparent 100%
+  );
+}
+
+.section-glow.blue::after {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 243, 255, 0.15) 0%,
+    rgba(0, 243, 255, 0.05) 50%,
+    transparent 100%
+  );
+}
+
+.section-glow.purple::after {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(188, 19, 254, 0.15) 0%,
+    rgba(188, 19, 254, 0.05) 50%,
+    transparent 100%
+  );
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-netflix-dark;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-netflix-red rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-red-700;
+}
